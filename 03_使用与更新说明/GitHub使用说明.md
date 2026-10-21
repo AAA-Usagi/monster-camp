@@ -1,6 +1,6 @@
 # 小怪营地的 GitHub 保存与更新
 
-目标账号：`AAA-Usagi`。拟用仓库名称：`monster-camp`，首次按私有仓库准备。是否已上传以实际 GitHub 仓库和发布记录为准；本地 Git 提交不等于上传成功。
+账号：`AAA-Usagi`。已于 2026-10-21 上传到私有仓库 [AAA-Usagi/monster-camp](https://github.com/AAA-Usagi/monster-camp)，并发布 [v1.1.0 安装包](https://github.com/AAA-Usagi/monster-camp/releases/tag/v1.1.0)。访问时需要登录有权限的 GitHub 账号。本地 Git 提交不等于上传成功，每次更新后仍需检查同步结果。
 
 ## 三个常用词
 
