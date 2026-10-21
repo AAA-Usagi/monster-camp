@@ -1,0 +1,18 @@
+﻿{
+    "passed":  [
+                   "Real process upgrades isolated v1 data; preserves coins/settings/appearance and verified originals",
+                   "Manual three-tier capture, default reset and 40/54/68 px sizes",
+                   "Difficulty editing keeps species; completion lock, 40-coin undo, 20-coin redo and delete/restore",
+                   "Real save failure preserves task text and hard selection; retry creates once",
+                   "Narrow 360 px window, 36/48/60 px sizes and long titles avoid overlap",
+                   "Restart preserves mixed difficulty/reward state without repeating migration",
+                   "Notification completion uses 20/40 coins and camp shows remaining coins",
+                   "All 12 SVG species render in three sizes and completed state",
+                   "No renderer errors across upgrade and new UI flows"
+               ],
+    "checks":  9,
+    "kind":  "development",
+    "dataPath":  "02_项目源码/output/upgrade-test-1792567252181",
+    "screenshots":  "04_界面预览/v1.1.0",
+    "testedAt":  "2026-10-21T07:21:16.036Z"
+}

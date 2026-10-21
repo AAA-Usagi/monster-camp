@@ -1,0 +1,53 @@
+{
+  "name": "monster-camp",
+  "version": "1.1.0",
+  "description": "小怪营地 · 把每天的工作变成一场轻冒险",
+  "main": "src/main.cjs",
+  "author": "Monster Camp",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/*.test.cjs",
+    "test:desktop": "node scripts/smoke.cjs",
+    "test:upgrade": "node scripts/upgrade-smoke.cjs",
+    "pack": "electron-builder --win --x64 --dir",
+    "dist": "electron-builder --win nsis --x64"
+  },
+  "build": {
+    "appId": "io.monstercamp.desktop",
+    "productName": "小怪营地",
+    "executableName": "MonsterCamp",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico",
+      "signAndEditExecutable": true
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "小怪营地",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "artifactName": "MonsterCamp-Setup-${version}-${arch}.${ext}"
+    }
+  },
+  "devDependencies": {
+    "@fontsource-variable/noto-sans-sc": "5.3.1",
+    "electron": "45.0.0",
+    "electron-builder": "26.15.3",
+    "playwright": "1.64.1"
+  }
+}

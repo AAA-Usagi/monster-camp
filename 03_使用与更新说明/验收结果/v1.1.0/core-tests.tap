@@ -1,0 +1,238 @@
+﻿TAP version 13
+# Subtest: each difficulty settles and reverses its actual reward exactly once
+ok 1 - each difficulty settles and reverses its actual reward exactly once
+  ---
+  duration_ms: 9.1168
+  type: 'test'
+  ...
+# Subtest: difficulty edits preserve appearance and completed rewards are locked
+ok 2 - difficulty edits preserve appearance and completed rewards are locked
+  ---
+  duration_ms: 4.3622
+  type: 'test'
+  ...
+# Subtest: mixed rewards, deletion and restoration keep coins and camp milestones consistent
+ok 3 - mixed rewards, deletion and restoration keep coins and camp milestones consistent
+  ---
+  duration_ms: 4.0933
+  type: 'test'
+  ...
+# Subtest: default is easy and callers cannot inject rewards or appearances
+ok 4 - default is easy and callers cannot inject rewards or appearances
+  ---
+  duration_ms: 0.8785
+  type: 'test'
+  ...
+# Subtest: invalid difficulty and reward state are rejected before persistence
+ok 5 - invalid difficulty and reward state are rejected before persistence
+  ---
+  duration_ms: 1.7047
+  type: 'test'
+  ...
+# Subtest: all twelve appearances are reachable and independent of difficulty
+ok 6 - all twelve appearances are reachable and independent of difficulty
+  ---
+  duration_ms: 5.0981
+  type: 'test'
+  ...
+# Subtest: Chinese date/time parsing is offline and preserves the original
+ok 7 - Chinese date/time parsing is offline and preserves the original
+  ---
+  duration_ms: 5.1223
+  type: 'test'
+  ...
+# Subtest: date-only, vague input, weekday and next weekday
+ok 8 - date-only, vague input, weekday and next weekday
+  ---
+  duration_ms: 1.0934
+  type: 'test'
+  ...
+# Subtest: year/month rollover, leap years and invalid dates
+ok 9 - year/month rollover, leap years and invalid dates
+  ---
+  duration_ms: 0.8891
+  type: 'test'
+  ...
+# Subtest: time-only uses today and past time is explicitly flagged
+ok 10 - time-only uses today and past time is explicitly flagged
+  ---
+  duration_ms: 0.4918
+  type: 'test'
+  ...
+# Subtest: colloquial 一点 is not mistaken for a reminder
+ok 11 - colloquial 一点 is not mistaken for a reminder
+  ---
+  duration_ms: 0.4737
+  type: 'test'
+  ...
+# Subtest: unscheduled/today/overdue/future/done grouping
+ok 12 - unscheduled/today/overdue/future/done grouping
+  ---
+  duration_ms: 0.2656
+  type: 'test'
+  ...
+# Subtest: duplicate creation and double completion are idempotent
+ok 13 - duplicate creation and double completion are idempotent
+  ---
+  duration_ms: 1.2866
+  type: 'test'
+  ...
+# Subtest: reopen restores exactly one reward on recompletion
+ok 14 - reopen restores exactly one reward on recompletion
+  ---
+  duration_ms: 0.4261
+  type: 'test'
+  ...
+# Subtest: all milestone thresholds persist after reopen and soft deletion
+ok 15 - all milestone thresholds persist after reopen and soft deletion
+  ---
+  duration_ms: 15.2303
+  type: 'test'
+  ...
+# Subtest: overnight counts reset without affecting accumulated rewards
+ok 16 - overnight counts reset without affecting accumulated rewards
+  ---
+  duration_ms: 0.7419
+  type: 'test'
+  ...
+# Subtest: reject invalid task and settings data
+ok 17 - reject invalid task and settings data
+  ---
+  duration_ms: 1.4609
+  type: 'test'
+  ...
+# Subtest: overdue reminders merge once, stay readable and survive restart
+ok 18 - overdue reminders merge once, stay readable and survive restart
+  ---
+  duration_ms: 1.6599
+  type: 'test'
+  ...
+# Subtest: completion and deletion cancel pending reminders
+ok 19 - completion and deletion cancel pending reminders
+  ---
+  duration_ms: 0.5675
+  type: 'test'
+  ...
+# Subtest: editing cancels old schedule and snooze delivers ten minutes later
+ok 20 - editing cancels old schedule and snooze delivers ten minutes later
+  ---
+  duration_ms: 1.1847
+  type: 'test'
+  ...
+# Subtest: daily recap is once per local day, even after changing review time
+ok 21 - daily recap is once per local day, even after changing review time
+  ---
+  duration_ms: 0.7675
+  type: 'test'
+  ...
+# Subtest: notification acknowledgement and edits prevent stale task targets
+ok 22 - notification acknowledgement and edits prevent stale task targets
+  ---
+  duration_ms: 0.5714
+  type: 'test'
+  ...
+# Subtest: floating icon remains visible after monitor removal and negative-coordinate displays
+ok 23 - floating icon remains visible after monitor removal and negative-coordinate displays
+  ---
+  duration_ms: 0.7245
+  type: 'test'
+  ...
+# Subtest: structured validation detects malformed stored values
+ok 24 - structured validation detects malformed stored values
+  ---
+  duration_ms: 0.9736
+  type: 'test'
+  ...
+# Subtest: legacy migration preserves every old field, rewards and deleted completed records
+ok 25 - legacy migration preserves every old field, rewards and deleted completed records
+  ---
+  duration_ms: 5.3121
+  type: 'test'
+  ...
+# Subtest: first load creates a verified immutable backup before committing v2; restart does not migrate twice
+ok 26 - first load creates a verified immutable backup before committing v2; restart does not migrate twice
+  ---
+  duration_ms: 57.4446
+  type: 'test'
+  ...
+# Subtest: missing optional backup still preserves the main legacy file
+ok 27 - missing optional backup still preserves the main legacy file
+  ---
+  duration_ms: 22.3116
+  type: 'test'
+  ...
+# Subtest: backup write failure stops migration and leaves source data and live state untouched
+ok 28 - backup write failure stops migration and leaves source data and live state untouched
+  ---
+  duration_ms: 14.881
+  type: 'test'
+  ...
+# Subtest: backup verification failure stops migration without altering original files
+ok 29 - backup verification failure stops migration without altering original files
+  ---
+  duration_ms: 18.9128
+  type: 'test'
+  ...
+# Subtest: migration replacement failure preserves original plus recovery snapshot; next launch retries safely
+ok 30 - migration replacement failure preserves original plus recovery snapshot; next launch retries safely
+  ---
+  duration_ms: 40.3872
+  type: 'test'
+  ...
+# Subtest: a legacy backup can recover a damaged main file with both originals preserved
+ok 31 - a legacy backup can recover a damaged main file with both originals preserved
+  ---
+  duration_ms: 40.2314
+  type: 'test'
+  ...
+# Subtest: corrupt legacy records are rejected without being normalized or overwritten
+ok 32 - corrupt legacy records are rejected without being normalized or overwritten
+  ---
+  duration_ms: 12.5169
+  type: 'test'
+  ...
+# Subtest: serialized concurrent writes persist every task and survive reload
+ok 33 - serialized concurrent writes persist every task and survive reload
+  ---
+  duration_ms: 280.7174
+  type: 'test'
+  ...
+# Subtest: rapid completion contributes one reward, persisted across restart
+ok 34 - rapid completion contributes one reward, persisted across restart
+  ---
+  duration_ms: 35.6276
+  type: 'test'
+  ...
+# Subtest: write failure does not publish changed state; retry succeeds
+ok 35 - write failure does not publish changed state; retry succeeds
+  ---
+  duration_ms: 20.2143
+  type: 'test'
+  ...
+# Subtest: corruption requires explicit recovery and preserves damaged file
+ok 36 - corruption requires explicit recovery and preserves damaged file
+  ---
+  duration_ms: 37.3581
+  type: 'test'
+  ...
+# Subtest: corruption without backup and interrupted initial writes never reset silently
+ok 37 - corruption without backup and interrupted initial writes never reset silently
+  ---
+  duration_ms: 23.4528
+  type: 'test'
+  ...
+# Subtest: uncommitted valid temporary file never replaces last committed data
+ok 38 - uncommitted valid temporary file never replaces last committed data
+  ---
+  duration_ms: 22.1234
+  type: 'test'
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 38
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2063.7272

@@ -1,0 +1,17 @@
+﻿{
+    "passed":  [
+                   "Renderer isolated; local fonts and SVG render",
+                   "Quick capture, Chinese schedule, grouping, double completion and reopen",
+                   "Search across views, edit validation, remove schedule, delete and undo",
+                   "Real persistence failure preserves draft; retry stores exactly once",
+                   "Camp unlock, settings, panel hide and floating entry",
+                   "Actual process restart retains tasks, settings and camp",
+                   "Startup merges overdue reminders, persists daily recap, snoozes and acknowledges",
+                   "No duplicate recap after restart",
+                   "No renderer JavaScript errors"
+               ],
+    "dataPath":  "02_项目源码/output/desktop-test-1792567498011",
+    "screenshots":  "04_界面预览/v1.1.0",
+    "testedAt":  "2026-10-21T07:25:25.471Z",
+    "executable":  "02_项目源码/dist/win-unpacked/MonsterCamp.exe"
+}

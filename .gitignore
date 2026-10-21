@@ -1,0 +1,30 @@
+# Only publish reviewed project files. Local deliveries and backups stay local.
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/LICENSE
+!/02_项目源码/
+!/03_使用与更新说明/
+!/04_界面预览/
+/04_界面预览/*
+!/04_界面预览/v1.1.0/
+
+# Dependencies, build products, test output and personal data
+**/node_modules/
+**/dist/
+**/output/
+**/.env
+**/.env.*
+**/camp.json
+**/camp.backup.json
+**/camp.damaged-*.json
+**/backups/
+**/*.log
+**/*.pem
+**/*.key
+**/*.pfx
+**/*.exe
+**/*.zip
+Thumbs.db
+.DS_Store

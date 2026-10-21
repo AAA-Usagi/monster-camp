@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'">
+  <title>小怪营地</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><span data-icon="leaf"></span><h1>小怪营地</h1><span class="brand-dot"></span></div>
+      <div class="window-tools"><button id="notices-button" class="icon-button" title="营地信箱" aria-label="营地信箱"><span data-icon="bell"></span><i id="notice-dot" hidden></i></button><button id="settings-button" class="icon-button" title="设置" aria-label="设置"><span data-icon="settings"></span></button><button id="hide-button" class="icon-button" title="收起到浮标" aria-label="收起到浮标"><span data-icon="close"></span></button></div>
+    </header>
+    <div id="error" class="error-banner" role="alert" hidden><span></span><button aria-label="关闭错误提示">×</button></div>
+    <section class="greeting">
+      <div class="greeting-copy"><p id="date-label" class="date-label"></p><h2 id="greeting-title">小小的事，也值得一场庆祝。</h2><p id="today-summary">今天从一件小事开始。</p></div>
+      <div class="greeting-monster" id="greeting-monster"></div>
+    </section>
+    <div class="journey-strip"><span><span class="tiny-spark">✧</span> 今天击败 <strong id="today-count">0</strong> 只</span><span id="coin-counter" class="coin-counter"><span class="coin-icon"></span><strong id="coin-count">0</strong><span>金币</span></span></div>
+    <nav class="main-tabs" aria-label="营地页面"><button class="active" data-tab="tasks" aria-current="page"><span data-icon="sword"></span>讨伐清单</button><button data-tab="camp"><span data-icon="tent"></span>我的营地<span id="new-unlock" hidden>新</span></button></nav>
+    <section id="tasks-page" class="page tasks-page">
+      <form id="capture-form" class="capture">
+        <label for="capture-input" class="sr-only">记下一件要做的事</label>
+        <div class="capture-field"><textarea id="capture-input" rows="2" maxlength="1000" placeholder="又来了一件事？先把它放这里…" spellcheck="false"></textarea><button id="capture-submit" class="add-button" type="submit" aria-label="记录任务" title="回车记录"><span data-icon="plus"></span></button></div>
+        <div class="capture-bottom"><button type="button" id="schedule-toggle" class="quiet-button"><span data-icon="calendar"></span><span>安排时间</span></button><span id="capture-hint">回车记录 · Shift + 回车换行</span></div>
+        <fieldset id="draft-difficulty" class="difficulty-picker"><legend>任务难度</legend><div class="difficulty-options"></div></fieldset>
+        <div id="parse-preview" class="parse-preview" hidden></div>
+        <div id="draft-schedule" class="schedule-fields" hidden><label>安排日期<input type="date" id="draft-date" aria-label="安排日期"></label><label>提醒时间<input type="time" id="draft-time" aria-label="提醒时间"></label><button type="button" id="clear-schedule" class="text-button">移除时间</button></div>
+      </form>
+      <div class="list-toolbar"><div class="filters" aria-label="任务分类"><button data-filter="today" class="selected">今天 <span></span></button><button data-filter="next">接下来 <span></span></button><button data-filter="unscheduled">未定时间 <span></span></button><button data-filter="done">已完成 <span></span></button></div><button id="search-toggle" class="icon-button" aria-label="搜索任务" title="搜索任务"><span data-icon="search"></span></button></div>
+      <div id="search-box" class="search-box" hidden><span data-icon="search"></span><input type="search" id="search-input" placeholder="搜索所有任务与历史记录…" aria-label="搜索所有任务与历史记录"><button class="text-button" id="search-clear">清除</button></div>
+      <div id="task-list" class="task-list" aria-live="polite"></div>
+    </section>
+    <section id="camp-page" class="page camp-page" hidden>
+      <div class="camp-heading"><div><h2>每一点努力，都在这里。</h2><p id="camp-caption">先安营，再慢慢长成喜欢的样子。</p></div><span class="little-stamp">我的小天地</span></div>
+      <div id="camp-scene"></div>
+      <div class="camp-progress"><div><strong id="next-title"></strong><span id="next-count"></span></div><progress id="camp-progress" max="30" value="0"></progress><p id="next-caption"></p></div>
+      <div id="milestones" class="milestones"></div>
+      <p class="camp-footnote">不用每天都很厉害。你做过的事，会留在这里。</p>
+    </section>
+    <footer class="footer"><span id="save-status"><i></i>只在本机，安心保存</span><span>一件一件，慢慢来。</span></footer>
+  </main>
+  <div id="effects" aria-hidden="true"></div>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <dialog id="edit-dialog"><form id="edit-form"><div class="dialog-heading"><h2>照顾一下这件事</h2><button type="button" class="icon-button" data-close="edit-dialog" aria-label="关闭编辑"><span data-icon="close"></span></button></div><label>要做的事情<textarea id="edit-title" rows="3" maxlength="1000" required></textarea></label>
+    <fieldset id="edit-difficulty" class="difficulty-picker"><legend>任务难度</legend><div class="difficulty-options"></div></fieldset>
+    <p id="difficulty-locked" class="difficulty-note" hidden>已完成任务的奖励已结算。先撤销完成，再调整难度。</p>
+    <div class="schedule-fields"><label>安排日期<input id="edit-date" type="date"></label><label>提醒时间<input id="edit-time" type="time"></label></div><button type="button" id="edit-clear-time" class="text-button">移除日期和提醒</button><p id="edit-original" class="original-input"></p><p id="edit-error" class="form-error" role="alert"></p><div class="dialog-actions"><button type="button" id="edit-delete" class="danger-button"><span data-icon="trash"></span>删除任务</button><button type="submit" id="edit-save" class="primary-button">保存修改</button></div></form></dialog>
+  <dialog id="settings-dialog"><form id="settings-form"><div class="dialog-heading"><h2>营地设置</h2><button type="button" class="icon-button" data-close="settings-dialog" aria-label="关闭设置"><span data-icon="close"></span></button></div><label class="setting-row"><span><strong>开机就来营地</strong><small>随 Windows 登录启动浮标</small></span><input type="checkbox" id="setting-autolaunch" role="switch"></label><label class="setting-row"><span><strong>每日营地回顾</strong><small>看看今天、逾期与未定时间的事</small></span><input type="checkbox" id="setting-review" role="switch"></label><label class="setting-row"><span>回顾时间</span><input type="time" id="setting-review-time" required></label><label class="setting-row"><span><strong>完成时庆祝一下</strong><small>星星、金币和解锁动画，全程无声</small></span><input type="checkbox" id="setting-animations" role="switch"></label><div class="local-note"><span data-icon="leaf"></span><div><strong>你的记录，只住在这台电脑。</strong><p>退出应用后暂停提醒，下次打开时补查。卸载应用默认保留记录。</p><details><summary>查看数据保存位置</summary><p id="data-path"></p></details></div></div><p id="settings-error" class="form-error" role="alert"></p><div class="dialog-actions"><span class="version">小怪营地 1.1.0</span><button type="submit" id="settings-save" class="primary-button">保存设置</button></div></form></dialog>
+  <dialog id="notices-dialog"><div class="dialog-heading"><h2>营地信箱</h2><button class="icon-button" data-close="notices-dialog" aria-label="关闭信箱"><span data-icon="close"></span></button></div><div id="notices-list"></div><button id="read-all" class="quiet-button">全部标为已读</button></dialog>
+  <script src="domain.js"></script>
+  <script type="module" src="renderer.mjs"></script>
+</body>
+</html>
